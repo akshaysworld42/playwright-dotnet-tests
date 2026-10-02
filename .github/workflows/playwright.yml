@@ -1,0 +1,37 @@
+name: Playwright Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code utaaro
+        uses: actions/checkout@v4
+
+      - name: .NET install karo
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Build
+        run: dotnet build
+
+      - name: Playwright browsers install karo
+        run: pwsh TestProject1/bin/Debug/net10.0/playwright.ps1 install --with-deps
+
+      - name: Tests chalao
+        run: dotnet test --no-build --logger "trx;LogFileName=results.trx"
+
+      - name: Screenshots aur report save karo
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-output
+          path: |
+            **/TestResults/
+            **/screenshots/
