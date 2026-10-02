@@ -48,7 +48,7 @@ public class NunitPlaywright : PageTest
         await mail.FillAsync(value:"akshaysworldott@gmail.com");
         await Page.GetByRole(AriaRole.Button, new() { Name = "NEXT" }).ClickAsync();
         await Page.WaitForTimeoutAsync(3000);
-        await Page.ScreenshotAsync(new() { Path = "screenshots/next.jpg" });
+        await Page.ScreenshotAsync(new() { Path = "screenshots/checking.jpg" });
         
         // Now we need to click the checkbox
         await Page.GetByText("I have read and I accept").SetCheckedAsync(true, new() { Position = new() { X = 5, Y = 5 } });
