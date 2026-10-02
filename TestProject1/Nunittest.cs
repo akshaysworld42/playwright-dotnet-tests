@@ -27,7 +27,7 @@ public class NunitPlaywright : PageTest
         // Opening Pricing page and clicking a screenshot of it
         await Page.ClickAsync(selector:"text=Pricing");
         await Page.WaitForTimeoutAsync(3000);
-        await Page.ScreenshotAsync(new() { Path = @"C:\Users\aksha\Downloads\login.jpg" });
+        await Page.ScreenshotAsync(new() { Path = "screenshots/login.jpg" });
         
         // Verify if page is correctly opened
         var isExist = await Page.Locator("text='Subscription Options and Pricing'").First.IsVisibleAsync();
@@ -41,18 +41,18 @@ public class NunitPlaywright : PageTest
 
         await card.GetByRole(AriaRole.Link, new() { Name = "Buy" }).ClickAsync();
         await Page.WaitForTimeoutAsync(3000);
-        await Page.ScreenshotAsync(new() { Path = @"C:\Users\aksha\Downloads\buy.jpg" });
+        await Page.ScreenshotAsync(new() { Path = "screenshots/buy.jpg" });
         
         // Now put email id and next button on website
         var mail= Page.GetByPlaceholder("Email address or an existing Subscription Pack reference");
         await mail.FillAsync(value:"akshaysworldott@gmail.com");
         await Page.GetByRole(AriaRole.Button, new() { Name = "NEXT" }).ClickAsync();
         await Page.WaitForTimeoutAsync(3000);
-        await Page.ScreenshotAsync(new() { Path = @"C:\Users\aksha\Downloads\next.jpg" });
+        await Page.ScreenshotAsync(new() { Path = "screenshots/next.jpg" });
         
         // Now we need to click the checkbox
         await Page.GetByText("I have read and I accept").SetCheckedAsync(true, new() { Position = new() { X = 5, Y = 5 } });
         await Page.WaitForTimeoutAsync(3000);
-        await Page.ScreenshotAsync(new() { Path = @"C:\Users\aksha\Downloads\checkbox.jpg" });
+        await Page.ScreenshotAsync(new() { Path = "screenshots/checkbox.jpg" });
     }
 }
