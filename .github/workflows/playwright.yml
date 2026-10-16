@@ -10,10 +10,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Code utaaro
+      - name: Code Copy
         uses: actions/checkout@v4
 
-      - name: .NET install karo
+      - name: .NET install
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
@@ -21,13 +21,13 @@ jobs:
       - name: Build
         run: dotnet build
 
-      - name: Playwright browsers install karo
+      - name: Playwright browsers install
         run: pwsh TestProject1/bin/Debug/net10.0/playwright.ps1 install --with-deps
 
-      - name: Tests chalao
+      - name: Tests Run
         run: dotnet test --no-build --logger "trx;LogFileName=results.trx"
 
-      - name: Screenshots aur report save karo
+      - name: Screenshots and report save
         if: always()
         uses: actions/upload-artifact@v4
         with:
