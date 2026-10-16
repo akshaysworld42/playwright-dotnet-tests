@@ -32,10 +32,10 @@ public class LoginTests : PageTest
         await Page.Locator("[data-test=\"item-2-title-link\"]").ClickAsync();
         await Page.Locator("[data-test=\"shopping-cart-link\"]").ClickAsync();
 
-        Directory.CreateDirectory("screenshots");
-        await Page.ScreenshotAsync(new() { Path = "screenshots/shopping_cart.jpg" });
+        Directory.CreateDirectory("screenshots/CLI_test");
+        await Page.ScreenshotAsync(new() { Path = "screenshots/CLI_test/shopping_cart.jpg" });
 
         await Page.Locator("[data-test=\"checkout\"]").ClickAsync();
-        await Page.ScreenshotAsync(new() { Path = "screenshots/checkout.jpg" });
+        await Page.ScreenshotAsync(new() { Path = "screenshots/CLI_test/checkout.jpg" });
     }
 }
